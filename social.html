@@ -142,9 +142,8 @@
 
 <body>
 
-
     <div class="container">
-        <form action="/action_page.php">
+        <form onsubmit ="return verifyPassword()">
             <div class="row">
                 <h2 style="text-align:center">Login with Social Media or Manually</h2>
                 <div class="vl">
@@ -152,13 +151,13 @@
                 </div>
 
                 <div class="col">
-                    <a href="#" class="fb btn">
-                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                    <a href="#" class="fb btn" onclick="nonWorkingButton()">
+                        <i class="fa fa-facebook fa-fw" ></i> Login with Facebook
                     </a>
-                    <a href="#" class="twitter btn">
+                    <a href="#" class="twitter btn" onclick="nonWorkingButton()">
                         <i class="fa fa-twitter fa-fw"></i> Login with Twitter
                     </a>
-                    <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                    <a href="#" class="google btn" onclick="nonWorkingButton()"><i class="fa fa-google fa-fw">
                         </i> Login with Google+
                     </a>
                 </div>
@@ -168,22 +167,70 @@
                         <p>Or sign in manually:</p>
                     </div>
 
-                    <input type="text" name="username" placeholder="Username" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Login">
+                    <input type="text" placeholder="Username" required>
+                    <input type="password" id = "pswd"  placeholder="Password" required>
+                    <input type="submit" onsubmit="verifyPassword()" value="Login">
                 </div>
 
             </div>
         </form>
     </div>
 
+ 
+
+
+    <script>
+        function myFunction() {
+            var pass = document.getElementById("pswd").value; 
+            if(pass=='Shubham1') {  
+                alert("Hello ! Welcome to hotel booking");
+                return true;
+            }
+            else{
+                alert("Password is not correct");
+                return false;
+            }
+        }
+
+        function verifyPassword() {  
+        var pw = document.getElementById("pswd").value;  
+        //check empty password field  
+        if(pw == "") {  
+            alert("Password is Empty!");
+            return false;
+        }  
+         
+       //minimum password length validation  
+        if(pw.length < 8) {  
+            alert("**Password length must be atleast 8 characters");  
+            return false;
+         
+        }  
+        
+      //maximum length of password validation  
+        if(pw.length > 15) {  
+            alert("**Password length must not exceed 15 characters");  
+          
+        }
+        else{
+            myFunction();
+        }
+
+      } 
+
+      function nonWorkingButton() {
+                alert("This is not working now!");
+                return false;
+            }
+        </script>
+
     <div class="bottom-container">
         <div class="row">
             <div class="col">
-                <a href="#" style="color:white" class="btn">Sign up</a>
+                <a href="#" style="color:white" class="btn" onclick="nonWorkingButton()">Sign up</a>
             </div>
             <div class="col">
-                <a href="#" style="color:white" class="btn">Forgot password?</a>
+                <a href="#" style="color:white" class="btn" onclick="nonWorkingButton()">Forgot password?</a>
             </div>
         </div>
     </div>
